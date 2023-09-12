@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lan="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{base::Layout(~{::section})}">
+<head>
+
+<title>Insert title here</title>
+</head>
+<body>
+<section class="text-center">
+<h1>Profile Page</h1>
+
+<h4>Name:[[${person.name}]]</h4>
+<h4>Email:[[${person.email}]]</h4>
+<h4>Mobile:[[${person.mobile}]]</h4>
+<h4>Role:[[${person.role}]]</h4>
+
+<a href="/logout">Logout</a>
+</section>
+</body>
+</html>

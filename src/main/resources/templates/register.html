@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lan="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{base::Layout(~{::section})}">
+<head>
+
+<title>Insert title here</title>
+</head>
+<body>
+<section>
+<div class="container">
+  <div class="row col-md-8 offset-md-2">
+    <div class="card">
+      <div class="card-header">
+          <h2 class="text-center">Registration</h2>
+      </div>
+ 
+          </div>
+          <th:block th:if="${session.msg}">
+          <p class="alert alert-info">[[${session.msg}]]</p>
+          </th:block>
+          <th:block th:text="${@personServiceImpl.removeSessionMessage()}"></th:block>
+     
+      <div class="card-body">
+          <form
+            method="post"
+            role="form"
+            th:action="@{/saved}"
+            th:object="${person}"
+          >
+            <div class="form-group mb-3">
+              <label class="form-label">Name</label>
+              <input
+                      class="form-control"
+                      id="firstName"
+                      name="name"
+                      placeholder="Enter name"
+                      th:field="*{name}"
+                      type="text"
+              />
+              <p th:errors = "*{name}" class="text-danger"
+              th:if="${#fields.hasErrors('name')}"></p>
+            </div>
+
+
+            <div class="form-group mb-3">
+              <label class="form-label">Email</label>
+              <input
+                      class="form-control"
+                      id="email"
+                      name="email"
+                      placeholder="Enter email address"
+                      th:field="*{email}"
+                      type="email"
+              />
+              <p th:errors = "*{email}" class="text-danger"
+                 th:if="${#fields.hasErrors('email')}"></p>
+            </div>
+
+            <div class="form-group mb-3">
+              <label class="form-label">Password</label>
+              <input
+                      class="form-control"
+                      id="password"
+                      name="password"
+                      placeholder="Enter password"
+                      th:field="*{password}"
+                      type="password"
+              />
+              <p th:errors = "*{password}" class="text-danger"
+                 th:if="${#fields.hasErrors('password')}"></p>
+            </div>
+          
+           <div class="form-group mb-3">
+              <label class="form-label">Mobile</label>
+              <input
+                      class="form-control"
+                      id="mobile"
+                      name="mobile"
+                      placeholder="Enter Mobile number"
+                      th:field="*{mobile}"
+                      type="String"
+              />
+              <p th:errors = "*{mobile}" class="text-danger"
+                 th:if="${#fields.hasErrors('mobile')}"></p>
+            </div>
+          
+            <div class="form-group">
+              <button class="btn btn-primary" type="submit">Register</button>
+              <span>Already registered? <a th:href="@{/signin}">Login here</a></span>
+            </div>
+          </form>
+      </div>
+    </div>
+  </div>
+</section>
+</body>
+</html>
