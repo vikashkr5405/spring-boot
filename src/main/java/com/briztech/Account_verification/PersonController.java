@@ -34,18 +34,18 @@ public class PersonController {
 	}        
 	@GetMapping("/home")
 	public String home()
-	{
+	{   
 		return "home"; 
 	} 
-	@GetMapping("/signin")
+	@GetMapping("/signin") 
 	public String login()
 	{
 		return "login";
 	}  
 	@ModelAttribute 
 	public void commonUser(Principal p,Model m)
-	{
-		if(p!=null)
+	{  
+		if(p!=null)  
 		{
 		String email=p.getName(); 
 		Person ps=prepo.findByEmail(email);
